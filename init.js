@@ -170,25 +170,7 @@ async function main() {
   if (hasCodex) replaceInFile("AGENTS.md", replacements);
   else fs.unlinkSync("AGENTS.md");
 
-  // 5. Initialize git repos
-  const { execSync } = require("child_process");
-  if (hasKnowledge && fs.existsSync("knowledge")) {
-    try {
-      execSync("git init", { cwd: "knowledge", stdio: "ignore" });
-    } catch {}
-  }
-  if (hasPrototype && fs.existsSync("prototype")) {
-    try {
-      execSync("git init", { cwd: "prototype", stdio: "ignore" });
-    } catch {}
-  }
-  if (hasProject && fs.existsSync("project")) {
-    try {
-      execSync("git init", { cwd: "project", stdio: "ignore" });
-    } catch {}
-  }
-
-  // 6. Summary
+  // 5. Summary
   console.log("✅ 初始化完成！\n");
   console.log("项目配置摘要:");
   console.log(`  名称: ${answers.project_name}`);
